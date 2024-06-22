@@ -1,0 +1,100 @@
+@import "../../public/abstracts/__abstracts-dir";
+
+.mangekyou {
+    background: $black-second;
+    width: 8em;
+    height: 8em;
+    position: relative;
+    border: 5px $black solid;
+    animation: spin 5s ease-in-out;
+    border-radius: 50%;
+
+    .point {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 5.6em;
+        width: 5.6em;
+        background: $red;
+        animation: shine 5s ease-in-out;
+
+        &:nth-child(1) {
+            border-radius: 0% 100% 0% 100% / 0% 100% 0% 100%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+        }
+
+        &:nth-child(2) {
+            border-radius: 100% 0% 100% 0% / 100% 0% 100% 0%;
+            transform: translate(-50%, -50%) rotate(15deg);
+        }
+
+        &:nth-child(3) {
+            border-radius: 100% 0% 100% 0% / 100% 0% 100% 0%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            border: 3px $black solid;
+    
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                border: inherit;
+                width: 100%;
+                height: 100%;
+                border-radius: inherit;
+            }
+    
+            &::before {
+                transform: translate(-50%, -50%) rotate(-60deg);
+            }
+    
+            &::after {
+                transform: translate(-50%, -50%) rotate(60deg);
+            }
+        }
+    }
+
+    .circle {
+        border-radius: 50%;
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        background: $black;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1.5em;
+        height: 1.5em;
+        box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.6);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(720deg);
+    }
+}
+
+@keyframes shine {
+    0% {
+        background: $red;
+        opacity: 0;
+    }
+
+    50% {
+        background: $second-red;
+        box-shadow: 0 0 4px 4px $second-red;
+    }
+
+    100% {
+        box-shadow: none;
+        background: $red;
+        opacity: 1;
+    }
+}

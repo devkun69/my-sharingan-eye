@@ -1,0 +1,101 @@
+@import "../../public/abstracts/__abstracts-dir";
+
+.sharingan {
+    background: $red;
+    width: 8em;
+    height: 8em;
+    position: relative;
+    border: 5px $black solid;
+    animation: spin 5s ease-in-out, shine 5s ease-in-out;
+    border-radius: 50%;
+
+    .innerRing {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 4em;
+        height: 4em;
+        border: 4px rgba(110, 13, 13, 0.5) solid;
+        border-radius: 50%;
+
+        .tomoe,
+        .circle {
+            border-radius: 50%;
+            position: absolute;
+            width: 1em;
+            height: 1em;
+            background: $black;
+            z-index: 2;
+        }
+
+        .tomoe {
+            &:nth-child(1) {
+                top: -0.5em;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                box-sizing: border-box;
+                top: -0.5em;
+                width: 1.9em;
+                height: 0.9em;
+                border-left: 16px solid $black;
+                border-radius: 100% 0 0 0;
+            }
+
+            &:nth-child(2) {
+                bottom: 0.5em;
+                left: -0.3em;
+                transform: rotate(-120deg);
+            }
+
+            &:nth-child(3) {
+                bottom: 0.5em;
+                right: -0.3em;
+                transform: rotate(120deg);
+            }
+        }
+
+        .circle {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1.5em;
+            height: 1.5em;
+            box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.6);
+        }
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(720deg);
+    }
+}
+
+@keyframes shine {
+    0% {
+        background: $red;
+        opacity: 0;
+    }
+
+    50% {
+        background: $second-red;
+        box-shadow: 0 0 4px 4px $second-red;
+    }
+
+    100% {
+        box-shadow: none;
+        background: $red;
+        opacity: 1;
+    }
+}
